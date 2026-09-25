@@ -1,7 +1,7 @@
 
 async function loadCourses() {
     try {
-        const response = await fetch('data/courses.json');  
+        const response = await fetch('data/courses.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -9,7 +9,7 @@ async function loadCourses() {
         return courses;
     } catch (error) {
         console.error('Failed to load course data:', error);
-        throw error; 
+        throw error;
     }
 }
 
@@ -28,10 +28,10 @@ const courseVisuals = {
     6: { type: 'icon', value: 'fa-solid fa-database', color: 'bg-success-subtle text-success' }
 };
 
-const DEFAULT_VISUAL = { 
-    type: 'icon', 
-    value: 'fa-solid fa-book', 
-    color: 'bg-secondary-subtle text-dark' 
+const DEFAULT_VISUAL = {
+    type: 'icon',
+    value: 'fa-solid fa-book',
+    color: 'bg-secondary-subtle text-dark'
 };
 const DEFAULT_BADGE = 'bg-secondary-subtle text-secondary';
 
@@ -42,10 +42,10 @@ function getCourseStyles(courseId, category) {
     const visual = courseVisuals[courseId] || DEFAULT_VISUAL;
     const badgeColorClass = categoryStyles[category] || DEFAULT_BADGE;
 
-    return { 
-        visualData: visual, 
-        iconColorClass: visual.color, 
-        badgeColorClass: badgeColorClass 
+    return {
+        visualData: visual,
+        iconColorClass: visual.color,
+        badgeColorClass: badgeColorClass
     };
 }
 
@@ -56,7 +56,7 @@ function createIconElement(visualData) {
         return iconElement;
     } else {
         const textElement = document.createElement('span');
-        textElement.textContent = visualData.value; 
+        textElement.textContent = visualData.value;
         return textElement;
     }
 }
@@ -75,18 +75,18 @@ function createCourseCard(course) {
 
     const mobileIconDiv = document.createElement('div');
     mobileIconDiv.className = `course-icon-mobile ${styles.iconColorClass} rounded-4 d-flex align-items-center justify-content-center fw-bold`;
-    mobileIconDiv.appendChild(createIconElement(styles.visualData)); 
+    mobileIconDiv.appendChild(createIconElement(styles.visualData));
 
     const mobileContentDiv = document.createElement('div');
     mobileContentDiv.className = 'flex-grow-1';
 
     const mobileTitle = document.createElement('h6');
     mobileTitle.className = 'fw-bold text-dark mb-1 fs-6';
-    mobileTitle.textContent = course.title; 
+    mobileTitle.textContent = course.title;
 
     const mobileSub1 = document.createElement('p');
     mobileSub1.className = 'text-muted mb-1 small';
-    mobileSub1.textContent = `${course.category} • ${course.instructor}`; 
+    mobileSub1.textContent = `${course.category} • ${course.instructor}`;
 
     const mobileSub2 = document.createElement('p');
     mobileSub2.className = 'text-muted mb-0 small';
@@ -103,19 +103,19 @@ function createCourseCard(course) {
 
     const desktopIconDiv = document.createElement('div');
     desktopIconDiv.className = `course-icon ${styles.iconColorClass} rounded-3 d-flex align-items-center justify-content-center fw-bold`;
-    desktopIconDiv.appendChild(createIconElement(styles.visualData)); 
+    desktopIconDiv.appendChild(createIconElement(styles.visualData));
 
     const infoDiv = document.createElement('div');
     infoDiv.className = 'course-info';
 
     const desktopTitle = document.createElement('h5');
     desktopTitle.className = 'card-title fw-bold text-dark mb-2';
-    desktopTitle.textContent = course.title; 
+    desktopTitle.textContent = course.title;
 
     const badgeContainer = document.createElement('div');
     const badge = document.createElement('span');
     badge.className = `badge ${styles.badgeColorClass} rounded-pill px-3 py-1 fw-medium`;
-    badge.textContent = course.category; 
+    badge.textContent = course.category;
     badgeContainer.appendChild(badge);
 
     infoDiv.append(desktopTitle, badgeContainer);
@@ -126,13 +126,13 @@ function createCourseCard(course) {
 
     const instructorDiv = document.createElement('div');
     instructorDiv.className = 'instructor d-flex align-items-center';
-    
+
     const instructorIcon = document.createElement('i');
     instructorIcon.className = 'fa-solid fa-user text-secondary';
-    
+
     const instructorSpan = document.createElement('span');
-    instructorSpan.textContent = course.instructor; 
-    
+    instructorSpan.textContent = course.instructor;
+
     instructorDiv.append(instructorIcon, instructorSpan);
 
     const metaDiv = document.createElement('div');
@@ -143,7 +143,7 @@ function createCourseCard(course) {
     const clockIcon = document.createElement('i');
     clockIcon.className = 'fa-solid fa-clock text-secondary';
     const durationSpan = document.createElement('span');
-    durationSpan.textContent = course.duration; 
+    durationSpan.textContent = course.duration;
     durationDiv.append(clockIcon, durationSpan);
 
     const levelDiv = document.createElement('div');
@@ -151,7 +151,7 @@ function createCourseCard(course) {
     const levelIcon = document.createElement('i');
     levelIcon.className = 'fa-solid fa-chart-bar text-secondary';
     const levelSpan = document.createElement('span');
-    levelSpan.textContent = course.level; 
+    levelSpan.textContent = course.level;
     levelDiv.append(levelIcon, levelSpan);
 
     metaDiv.append(durationDiv, levelDiv);
@@ -176,7 +176,7 @@ function renderCourses(courses) {
 
     if (!container) {
         console.error("Rendering failed: 'courses-container' element not found in the DOM.");
-        return; 
+        return;
     }
 
     const fragment = document.createDocumentFragment();
@@ -239,11 +239,11 @@ function openCourseDetails(course) {
 
 function filterCourses(courses, searchTerm, selectedCategory) {
     const lowerCaseTerm = searchTerm.toLowerCase().trim();
-    
+
     return courses.filter(course => {
         const matchesSearch = (course.title || '').toLowerCase().includes(lowerCaseTerm);
         const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
-    
+
         return matchesSearch && matchesCategory;
     });
 }
@@ -271,7 +271,7 @@ function applyFilters(courses) {
     const filteredCourses = filterCourses(courses, searchTerm, selectedCategory);
     renderCourses(filteredCourses);
     updateEmptyState(filteredCourses.length > 0);
-    
+
     if (clearButton) {
         clearButton.classList.toggle('d-none', !searchTerm.trim());
     }
@@ -302,12 +302,12 @@ function setupSearch(courses) {
         console.error("Search setup failed: 'search-input' element not found");
         return;
     }
-    
+
     searchInput.addEventListener('input', () => {
         clearTimeout(searchDebounceTimer);
         searchDebounceTimer = setTimeout(() => {
             applyFilters(courses);
-        }, 300); 
+        }, 300);
     });
 
     if (clearButton) {
@@ -366,10 +366,10 @@ function setupClearFilters(courses) {
     });
 }
 
-async function init() { 
+async function init() {
     try {
         const courses = await loadCourses();
-        setupSearch(courses); 
+        setupSearch(courses);
         setupCategoryFilter(courses);
         setupCourseActions(courses);
         setupClearFilters(courses);
@@ -378,7 +378,7 @@ async function init() {
         return courses;
     } catch (error) {
         console.error('Failed to initialize app:', error);
-        return []; 
+        return [];
     }
 }
 init();

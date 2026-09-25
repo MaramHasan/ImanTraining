@@ -1,15 +1,15 @@
-
 .avatar-icon {
-  width: 36px;
-  height: 36px;
+    width: 36px;
+    height: 36px;
 }
+
 .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* WELCOME  SECTION(FED-04) */
 .welcome-card {
-    background-color: #f0f5ff; 
+    background-color: #f0f5ff;
     border: 1px solid #e0eafd;
 }
 
@@ -20,39 +20,45 @@
 
 .book-img-wrapper {
     width: 100%;
-    max-width: 280px; 
+    max-width: 280px;
     margin: 0 auto;
 }
 
 @media (min-width: 768px) {
     .book-img-wrapper {
-        margin: 0 0 0 auto; 
+        margin: 0 0 0 auto;
     }
 }
 
 .book-img {
     width: 100%;
     height: auto;
-    object-fit: contain; 
+    object-fit: contain;
     display: block;
+}
+
+@media (max-width: 767.98px) {
+    .profile-section {
+        margin-left: auto;
+    }
 }
 
 /* COURSES SECTION (FED-09) mobile  */
 
 
 .card {
-    padding: 1.5rem !important; 
+    padding: 1.5rem !important;
 }
 
 
 
 .card-title {
     margin-top: 0;
-    line-height: 1.2; 
+    line-height: 1.2;
 }
 
-.card .d-flex.align-items-center.gap-4.text-muted.small.mb-0 > div {
-    white-space: nowrap; 
+.card .d-flex.align-items-center.gap-4.text-muted.small.mb-0>div {
+    white-space: nowrap;
 }
 
 .course-content {
@@ -73,9 +79,9 @@
     font-size: 2.2rem;
 }
 
-.course-icon.bg-danger-subtle, 
+.course-icon.bg-danger-subtle,
 .course-icon-mobile.bg-danger-subtle {
-    font-size: 1.6rem;    
+    font-size: 1.6rem;
     font-weight: 800;
 }
 
@@ -167,7 +173,7 @@
     }
 
     .instructor,
-    .course-meta > div {
+    .course-meta>div {
         white-space: nowrap;
     }
 }
@@ -198,9 +204,10 @@
 /*Course Details Modal (FED-22)*/
 
 #course-details-modal .modal-header {
-    border-bottom: none;   
+    border-bottom: none;
     padding: 0.5rem 1rem;
 }
+
 #course-details-modal .btn-close {
     font-size: 0.9rem;
     opacity: 0.85;
@@ -208,6 +215,7 @@
     padding: 1rem;
     margin: -0.5rem -0.5rem -0.5rem 0;
 }
+
 #course-details-modal .btn-close:hover {
     opacity: 1;
 }
@@ -256,10 +264,11 @@
 /*  App Layout with Side Navigation (FED-25) */
 
 :root {
-    --app-header-height: 77px; 
+    --app-header-height: 77px;
     --app-sidebar-width: 250px;
     --app-sidebar-width-lg: 260px;
 }
+
 header.navbar {
     min-height: var(--app-header-height);
     box-sizing: border-box;
@@ -274,6 +283,7 @@ header.navbar {
 .sidebar-nav {
     padding: 1.5rem 1rem;
 }
+
 .sidebar-nav .nav {
     gap: 0.25rem;
 }
@@ -307,10 +317,12 @@ header.navbar {
     color: #0d6efd;
     font-weight: 600;
 }
+
 .app-main {
     flex: 1;
-    min-width: 0; 
+    min-width: 0;
 }
+
 @media (min-width: 768px) {
     .sidebar-nav {
         width: var(--app-sidebar-width);
@@ -328,16 +340,18 @@ header.navbar {
         width: var(--app-sidebar-width-lg);
     }
 }
+
 @media (max-width: 767.98px) {
     .app-layout {
-        flex-direction: column;   
+        flex-direction: column;
     }
 
     .sidebar-nav {
-        width: 100%;             
+        width: 100%;
         border-bottom: 1px solid #e9ecef;
     }
 }
+
 /*   Header Search (FED-36)*/
 
 .header-container {
@@ -346,8 +360,8 @@ header.navbar {
 }
 
 .header-search {
-    order: 3;            
-    flex: 1 1 100%;     
+    order: 3;
+    flex: 1 1 100%;
 }
 
 @media (min-width: 768px) {
@@ -357,8 +371,8 @@ header.navbar {
     }
 
     .header-search {
-        order: 0;             
-        flex: 0 1 550px;     
+        order: 0;
+        flex: 0 1 550px;
         max-width: 550px;
     }
 }
@@ -383,19 +397,19 @@ header.navbar {
     border-color: transparent;
 }
 
-.app-main > .container {
+.app-main>.container {
     max-width: 100%;
     padding-inline: 24px;
 }
 
 @media (min-width: 1200px) {
-    .app-main > .container {
+    .app-main>.container {
         max-width: 1200px;
     }
 }
 
 @media (min-width: 1440px) {
-    .app-main > .container {
+    .app-main>.container {
         max-width: 1320px;
     }
 }
